@@ -1,11 +1,11 @@
 package sergey.goit;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class HttpImageStatusCli {
 
-    public void  askStatus() throws HttpStatusException, IOException, InterruptedException {
+    public void askStatus() {
+        HttpStatusChecker checker = new HttpStatusChecker();
         Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Enter HTTP code");
@@ -15,8 +15,14 @@ public class HttpImageStatusCli {
             }
             if (input.matches("\\d+")) {
                 int code = Integer.parseInt(input);
-                new HttpStatusImageDownloader().downloadStatusImage(code);
-                System.out.println("Image download");
+
+                checker.getStatusImage(code);
+                if (checker.getStatusCode() == 404) {
+                    System.out.println("There is not image for HTTP status " + code);
+                } else {
+                    new HttpStatusImageDownloader().downloadStatusImage(code);
+                    System.out.println("Image download");
+                }
             } else {
                 System.out.println("Please enter digit numer");
             }

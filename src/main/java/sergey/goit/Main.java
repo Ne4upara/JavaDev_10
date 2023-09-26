@@ -1,9 +1,7 @@
 package sergey.goit;
 
-import java.io.IOException;
-
 public class Main {
-    public static void main(String[] args) throws HttpStatusException, IOException, InterruptedException {
+    public static void main(String[] args)  {
 
         HttpImageStatusCli httpImageStatusCli = new HttpImageStatusCli();
         httpImageStatusCli.askStatus();

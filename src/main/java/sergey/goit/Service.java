@@ -7,11 +7,14 @@ import java.nio.file.Path;
 
 public class Service {
 
-    private static final String PATH_DIRECTORIY = "src/main/resources/images/";
-    public void directoriaExists(String d) throws IOException {
+    public void directoriaExists(String d)  {
 
         if (!Files.exists(Path.of(d))) {
-            Files.createDirectories(Path.of(d));
+            try {
+                Files.createDirectories(Path.of(d));
+            } catch (IOException e) {
+                System.err.println("Not Created Directotya");
+            }
         }
     }
 }
