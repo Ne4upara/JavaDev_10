@@ -27,5 +27,6 @@ public class HttpImageStatusCli {
                 System.out.println("Please enter digit numer");
             }
         }
+        scanner.close();
     }
 }
